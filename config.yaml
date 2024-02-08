@@ -1,0 +1,21 @@
+engine:
+  mode : translate # parser / translate
+
+parser: #爬虫
+  keyward : yolo,federated # 逗号分割
+  aim : conf/cvpr,conf/aaai # 逗号分割
+  year : 2022-2023 # 不填/2023/2022-2023
+  output_file_path : ./output.docx # 输出文件路径
+
+translate: #翻译
+  translate_mode : openai #目前只做了openai的
+  openai_key : 
+  openai_host : 
+  model : gpt-3.5-turbo-0125
+  translate_file : ./output.docx # 输入文件路径
+  output_file_path : ./output_zh.docx #输出文件路径
+  
+system:
+  quiet_mode : False
+  retry : 3
+  delay : 1

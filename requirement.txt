@@ -1,0 +1,6 @@
+Beautifulsoup4 
+requests
+python-docx
+openai
+lxml
+tqdm
