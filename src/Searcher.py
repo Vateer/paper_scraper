@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import time,random
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from src.Analyser import Analyser
 from src.FileHandler import FileWriter
 from src.Message import Message
@@ -41,7 +44,10 @@ class Searcher:
                 while(True):
                     final_url = year_url + "&s=ydvspc&h=30&b={}".format(str(b))
                     b += 1
-                    response = requests.get(final_url,'lxml',headers=headers)
+                    headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                    }
+                    response = requests.get(final_url, headers=headers, verify=False)
                     response.encoding = 'utf-8'
                     if response.status_code == 200:
                         print("search "+final_url)
